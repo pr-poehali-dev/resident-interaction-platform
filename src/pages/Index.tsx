@@ -95,8 +95,12 @@ const Index = () => {
             <div className="flex items-center space-x-3">
               <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
                 <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon" className="mr-2">
-                    <Icon name="Menu" size={24} />
+                  <Button 
+                    variant="default" 
+                    size="icon" 
+                    className="mr-2 h-12 w-12 bg-gradient-primary shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                  >
+                    <Icon name="Menu" size={26} className="text-white" />
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="left" className="w-80 p-0">
