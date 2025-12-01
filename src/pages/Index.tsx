@@ -6,11 +6,13 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const announcements = [
     {
@@ -91,6 +93,124 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
+              <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon" className="mr-2">
+                    <Icon name="Menu" size={24} />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="left" className="w-80 p-0">
+                  <div className="flex flex-col h-full bg-gradient-to-b from-primary/5 to-accent/5">
+                    <div className="p-6 border-b bg-gradient-primary">
+                      <div className="flex items-center gap-3 text-white">
+                        <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur flex items-center justify-center">
+                          <Icon name="Building2" size={24} />
+                        </div>
+                        <div>
+                          <h2 className="text-lg font-bold">Меню</h2>
+                          <p className="text-sm text-white/80">Навигация</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <nav className="flex-1 p-4 space-y-2">
+                      <Button
+                        variant={activeSection === 'home' ? 'default' : 'ghost'}
+                        className="w-full justify-start text-base h-12"
+                        onClick={() => {
+                          setActiveSection('home');
+                          setSidebarOpen(false);
+                        }}
+                      >
+                        <Icon name="Home" size={20} className="mr-3" />
+                        Главная
+                      </Button>
+
+                      <div className="pt-4 pb-2 px-3">
+                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                          Информация
+                        </p>
+                      </div>
+
+                      <Button
+                        variant={activeSection === 'announcements' ? 'default' : 'ghost'}
+                        className="w-full justify-start text-base h-12"
+                        onClick={() => {
+                          setActiveSection('announcements');
+                          setSidebarOpen(false);
+                        }}
+                      >
+                        <Icon name="Bell" size={20} className="mr-3" />
+                        Объявления
+                      </Button>
+
+                      <Button
+                        variant={activeSection === 'calendar' ? 'default' : 'ghost'}
+                        className="w-full justify-start text-base h-12"
+                        onClick={() => {
+                          setActiveSection('calendar');
+                          setSidebarOpen(false);
+                        }}
+                      >
+                        <Icon name="Calendar" size={20} className="mr-3" />
+                        Календарь событий
+                      </Button>
+
+                      <div className="pt-4 pb-2 px-3">
+                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                          Сервисы
+                        </p>
+                      </div>
+
+                      <Button
+                        variant={activeSection === 'requests' ? 'default' : 'ghost'}
+                        className="w-full justify-start text-base h-12"
+                        onClick={() => {
+                          setActiveSection('requests');
+                          setSidebarOpen(false);
+                        }}
+                      >
+                        <Icon name="FileText" size={20} className="mr-3" />
+                        Подать заявку
+                      </Button>
+
+                      <Button
+                        variant={activeSection === 'staff' ? 'default' : 'ghost'}
+                        className="w-full justify-start text-base h-12"
+                        onClick={() => {
+                          setActiveSection('staff');
+                          setSidebarOpen(false);
+                        }}
+                      >
+                        <Icon name="Users" size={20} className="mr-3" />
+                        Сотрудники
+                      </Button>
+
+                      <Button
+                        variant={activeSection === 'contacts' ? 'default' : 'ghost'}
+                        className="w-full justify-start text-base h-12"
+                        onClick={() => {
+                          setActiveSection('contacts');
+                          setSidebarOpen(false);
+                        }}
+                      >
+                        <Icon name="Phone" size={20} className="mr-3" />
+                        Контакты
+                      </Button>
+                    </nav>
+
+                    <div className="p-4 border-t bg-white/50">
+                      <div className="text-center text-sm text-muted-foreground">
+                        <p className="font-semibold">Аварийная служба</p>
+                        <p className="text-lg font-bold text-secondary mt-1">
+                          +7 (495) 911-11-11
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </SheetContent>
+              </Sheet>
+
               <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center shadow-lg">
                 <Icon name="Building2" className="text-white" size={24} />
               </div>
@@ -101,51 +221,6 @@ const Index = () => {
                 <p className="text-sm text-muted-foreground">Сервис для жителей</p>
               </div>
             </div>
-            <nav className="hidden md:flex items-center space-x-2">
-              <Button 
-                variant={activeSection === 'home' ? 'default' : 'ghost'}
-                onClick={() => setActiveSection('home')}
-                className="transition-all"
-              >
-                <Icon name="Home" size={18} className="mr-2" />
-                Главная
-              </Button>
-              <Button 
-                variant={activeSection === 'announcements' ? 'default' : 'ghost'}
-                onClick={() => setActiveSection('announcements')}
-              >
-                <Icon name="Bell" size={18} className="mr-2" />
-                Объявления
-              </Button>
-              <Button 
-                variant={activeSection === 'requests' ? 'default' : 'ghost'}
-                onClick={() => setActiveSection('requests')}
-              >
-                <Icon name="FileText" size={18} className="mr-2" />
-                Заявки
-              </Button>
-              <Button 
-                variant={activeSection === 'calendar' ? 'default' : 'ghost'}
-                onClick={() => setActiveSection('calendar')}
-              >
-                <Icon name="Calendar" size={18} className="mr-2" />
-                Календарь
-              </Button>
-              <Button 
-                variant={activeSection === 'staff' ? 'default' : 'ghost'}
-                onClick={() => setActiveSection('staff')}
-              >
-                <Icon name="Users" size={18} className="mr-2" />
-                Сотрудники
-              </Button>
-              <Button 
-                variant={activeSection === 'contacts' ? 'default' : 'ghost'}
-                onClick={() => setActiveSection('contacts')}
-              >
-                <Icon name="Phone" size={18} className="mr-2" />
-                Контакты
-              </Button>
-            </nav>
           </div>
         </div>
       </header>
@@ -160,26 +235,26 @@ const Index = () => {
                 </h2>
                 <p className="text-xl mb-8 text-white/90 animate-slide-up" style={{ animationDelay: '0.1s' }}>
                   Платформа для комфортного взаимодействия с управляющей компанией. 
-                  Подавайте заявки, следите за объявлениями и будьте в курсе всех событий вашего дома.
+                  Следите за объявлениями и будьте в курсе всех событий вашего дома.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Button 
                     size="lg" 
                     variant="secondary"
-                    onClick={() => setActiveSection('requests')}
+                    onClick={() => setActiveSection('announcements')}
                     className="shadow-lg hover:shadow-xl transition-all"
                   >
-                    <Icon name="Plus" size={20} className="mr-2" />
-                    Подать заявку
+                    <Icon name="Bell" size={20} className="mr-2" />
+                    Объявления
                   </Button>
                   <Button 
                     size="lg" 
                     variant="outline"
-                    onClick={() => setActiveSection('announcements')}
+                    onClick={() => setActiveSection('calendar')}
                     className="bg-white/10 border-white/30 text-white hover:bg-white/20"
                   >
-                    <Icon name="Bell" size={20} className="mr-2" />
-                    Объявления
+                    <Icon name="Calendar" size={20} className="mr-2" />
+                    Календарь
                   </Button>
                 </div>
               </div>
@@ -187,81 +262,62 @@ const Index = () => {
               <div className="absolute -left-20 -top-20 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
             </section>
 
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 animate-scale-in">
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
-                    <Icon name="FileText" className="text-primary" size={24} />
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h3 className="text-3xl font-bold mb-2">Объявления</h3>
+                    <p className="text-muted-foreground">Актуальная информация</p>
                   </div>
-                  <CardTitle>Быстрые заявки</CardTitle>
-                  <CardDescription>Сообщите о проблеме в один клик</CardDescription>
-                </CardHeader>
-                <CardContent>
                   <Button 
-                    className="w-full" 
-                    onClick={() => setActiveSection('requests')}
-                  >
-                    Создать заявку
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 animate-scale-in" style={{ animationDelay: '0.1s' }}>
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
-                    <Icon name="Bell" className="text-accent" size={24} />
-                  </div>
-                  <CardTitle>Доска объявлений</CardTitle>
-                  <CardDescription>Актуальная информация для жителей</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Button 
-                    className="w-full" 
                     variant="outline"
                     onClick={() => setActiveSection('announcements')}
                   >
-                    Смотреть все
+                    Все
+                    <Icon name="ArrowRight" size={18} className="ml-2" />
                   </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 animate-scale-in" style={{ animationDelay: '0.2s' }}>
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-3">
-                    <Icon name="Users" className="text-secondary" size={24} />
-                  </div>
-                  <CardTitle>Наши сотрудники</CardTitle>
-                  <CardDescription>Контакты специалистов компании</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Button 
-                    className="w-full" 
-                    variant="outline"
-                    onClick={() => setActiveSection('staff')}
-                  >
-                    Посмотреть
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="mt-8">
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <h3 className="text-3xl font-bold mb-2">Ближайшие события</h3>
-                  <p className="text-muted-foreground">Плановые работы и отключения</p>
                 </div>
-                <Button 
-                  variant="outline"
-                  onClick={() => setActiveSection('calendar')}
-                >
-                  Смотреть всё
-                  <Icon name="ArrowRight" size={18} className="ml-2" />
-                </Button>
+
+                <div className="space-y-4">
+                  {announcements.slice(0, 3).map((announcement, index) => (
+                    <Card 
+                      key={announcement.id}
+                      className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-slide-up cursor-pointer"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                      onClick={() => setActiveSection('announcements')}
+                    >
+                      <CardContent className="p-4">
+                        <div className="flex items-start gap-3 mb-2">
+                          <Badge className={getCategoryColor(announcement.category)}>
+                            {getCategoryLabel(announcement.category)}
+                          </Badge>
+                          <span className="text-xs text-muted-foreground">{announcement.date}</span>
+                        </div>
+                        <h4 className="font-semibold mb-2">{announcement.title}</h4>
+                        <p className="text-sm text-foreground/70 line-clamp-2">{announcement.content}</p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                {events.slice(0, 4).map((event, index) => {
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h3 className="text-3xl font-bold mb-2">Календарь событий</h3>
+                    <p className="text-muted-foreground">Плановые работы</p>
+                  </div>
+                  <Button 
+                    variant="outline"
+                    onClick={() => setActiveSection('calendar')}
+                  >
+                    Все
+                    <Icon name="ArrowRight" size={18} className="ml-2" />
+                  </Button>
+                </div>
+
+                <div className="space-y-4">
+                  {events.slice(0, 3).map((event, index) => {
                   const eventDate = new Date(event.date);
                   
                   const getEventIcon = (type: string) => {
@@ -322,7 +378,8 @@ const Index = () => {
                       </CardContent>
                     </Card>
                   );
-                })}
+                  })}
+                </div>
               </div>
             </div>
           </div>
