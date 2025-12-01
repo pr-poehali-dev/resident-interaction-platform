@@ -54,6 +54,15 @@ const Index = () => {
     { name: 'Попова Елена Андреевна', position: 'Специалист по работе с жителями', phone: '+7 (495) 123-45-70', email: 'popova@uk.ru' }
   ];
 
+  const events = [
+    { id: 1, date: '2024-12-20', title: 'Отключение воды', time: '10:00-16:00', type: 'water', description: 'Плановое отключение холодного водоснабжения' },
+    { id: 2, date: '2024-12-22', title: 'Перекрытие въезда', time: '09:00-18:00', type: 'road', description: 'Ремонт дорожного покрытия во дворе' },
+    { id: 3, date: '2024-12-25', title: 'Отключение электричества', time: '14:00-16:00', type: 'electricity', description: 'Плановые работы на электросетях' },
+    { id: 4, date: '2024-12-27', title: 'Уборка подъездов', time: '12:00-15:00', type: 'cleaning', description: 'Генеральная уборка всех подъездов' },
+    { id: 5, date: '2025-01-10', title: 'Проверка отопления', time: '10:00-17:00', type: 'heating', description: 'Техническая проверка системы отопления' },
+    { id: 6, date: '2025-01-15', title: 'Отключение воды', time: '08:00-12:00', type: 'water', description: 'Замена стояков' }
+  ];
+
   const filteredAnnouncements = selectedCategory === 'all' 
     ? announcements 
     : announcements.filter(a => a.category === selectedCategory);
@@ -114,6 +123,13 @@ const Index = () => {
               >
                 <Icon name="FileText" size={18} className="mr-2" />
                 Заявки
+              </Button>
+              <Button 
+                variant={activeSection === 'calendar' ? 'default' : 'ghost'}
+                onClick={() => setActiveSection('calendar')}
+              >
+                <Icon name="Calendar" size={18} className="mr-2" />
+                Календарь
               </Button>
               <Button 
                 variant={activeSection === 'staff' ? 'default' : 'ghost'}
@@ -338,6 +354,99 @@ const Index = () => {
                 </Button>
               </CardContent>
             </Card>
+          </div>
+        )}
+
+        {activeSection === 'calendar' && (
+          <div className="space-y-6 animate-fade-in">
+            <div className="mb-8">
+              <h2 className="text-4xl font-bold mb-2">Календарь событий</h2>
+              <p className="text-muted-foreground">Плановые работы и отключения</p>
+            </div>
+
+            <div className="grid gap-4">
+              {events.map((event, index) => {
+                const eventDate = new Date(event.date);
+                const today = new Date();
+                const isUpcoming = eventDate >= today;
+                const isPast = eventDate < today;
+                
+                const getEventIcon = (type: string) => {
+                  switch (type) {
+                    case 'water': return 'Droplet';
+                    case 'electricity': return 'Zap';
+                    case 'road': return 'Construction';
+                    case 'heating': return 'Flame';
+                    case 'cleaning': return 'Sparkles';
+                    default: return 'Calendar';
+                  }
+                };
+
+                const getEventColor = (type: string) => {
+                  switch (type) {
+                    case 'water': return 'bg-blue-500';
+                    case 'electricity': return 'bg-yellow-500';
+                    case 'road': return 'bg-orange-500';
+                    case 'heating': return 'bg-red-500';
+                    case 'cleaning': return 'bg-purple-500';
+                    default: return 'bg-gray-500';
+                  }
+                };
+
+                return (
+                  <Card 
+                    key={event.id}
+                    className={`hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-slide-up ${isPast ? 'opacity-60' : ''}`}
+                    style={{ animationDelay: `${index * 0.05}s` }}
+                  >
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="flex flex-col items-center min-w-[80px]">
+                          <div className="text-3xl font-bold text-primary">
+                            {eventDate.getDate()}
+                          </div>
+                          <div className="text-sm text-muted-foreground uppercase">
+                            {eventDate.toLocaleDateString('ru-RU', { month: 'short' })}
+                          </div>
+                          <div className="text-xs text-muted-foreground">
+                            {eventDate.getFullYear()}
+                          </div>
+                        </div>
+
+                        <div className="flex-1">
+                          <div className="flex items-start gap-3 mb-3">
+                            <div className={`w-10 h-10 rounded-lg ${getEventColor(event.type)} flex items-center justify-center flex-shrink-0`}>
+                              <Icon name={getEventIcon(event.type)} className="text-white" size={20} />
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-xl font-semibold mb-1">{event.title}</h3>
+                              <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                                <Icon name="Clock" size={16} />
+                                <span>{event.time}</span>
+                              </div>
+                              <p className="text-foreground/80">{event.description}</p>
+                            </div>
+                          </div>
+                          
+                          {isUpcoming && (
+                            <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
+                              <Icon name="Bell" size={14} className="mr-1" />
+                              Предстоящее
+                            </Badge>
+                          )}
+                          {isPast && (
+                            <Badge variant="outline" className="bg-muted">
+                              <Icon name="Check" size={14} className="mr-1" />
+                              Завершено
+                            </Badge>
+                          )}
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
           </div>
         )}
 
