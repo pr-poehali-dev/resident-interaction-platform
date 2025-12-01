@@ -244,6 +244,87 @@ const Index = () => {
                 </CardContent>
               </Card>
             </div>
+
+            <div className="mt-8">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h3 className="text-3xl font-bold mb-2">Ближайшие события</h3>
+                  <p className="text-muted-foreground">Плановые работы и отключения</p>
+                </div>
+                <Button 
+                  variant="outline"
+                  onClick={() => setActiveSection('calendar')}
+                >
+                  Смотреть всё
+                  <Icon name="ArrowRight" size={18} className="ml-2" />
+                </Button>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                {events.slice(0, 4).map((event, index) => {
+                  const eventDate = new Date(event.date);
+                  
+                  const getEventIcon = (type: string) => {
+                    switch (type) {
+                      case 'water': return 'Droplet';
+                      case 'electricity': return 'Zap';
+                      case 'road': return 'Construction';
+                      case 'heating': return 'Flame';
+                      case 'cleaning': return 'Sparkles';
+                      default: return 'Calendar';
+                    }
+                  };
+
+                  const getEventColor = (type: string) => {
+                    switch (type) {
+                      case 'water': return 'bg-blue-500';
+                      case 'electricity': return 'bg-yellow-500';
+                      case 'road': return 'bg-orange-500';
+                      case 'heating': return 'bg-red-500';
+                      case 'cleaning': return 'bg-purple-500';
+                      default: return 'bg-gray-500';
+                    }
+                  };
+
+                  return (
+                    <Card 
+                      key={event.id}
+                      className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-scale-in cursor-pointer"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                      onClick={() => setActiveSection('calendar')}
+                    >
+                      <CardContent className="p-4">
+                        <div className="flex items-start gap-4">
+                          <div className="flex flex-col items-center min-w-[60px]">
+                            <div className="text-2xl font-bold text-primary">
+                              {eventDate.getDate()}
+                            </div>
+                            <div className="text-xs text-muted-foreground uppercase">
+                              {eventDate.toLocaleDateString('ru-RU', { month: 'short' })}
+                            </div>
+                          </div>
+
+                          <div className="flex-1">
+                            <div className="flex items-start gap-3 mb-2">
+                              <div className={`w-8 h-8 rounded-lg ${getEventColor(event.type)} flex items-center justify-center flex-shrink-0`}>
+                                <Icon name={getEventIcon(event.type)} className="text-white" size={16} />
+                              </div>
+                              <div className="flex-1">
+                                <h4 className="font-semibold mb-1">{event.title}</h4>
+                                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                                  <Icon name="Clock" size={14} />
+                                  <span>{event.time}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         )}
 
