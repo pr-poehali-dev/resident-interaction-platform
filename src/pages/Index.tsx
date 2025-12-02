@@ -201,14 +201,94 @@ const Index = () => {
                         <Icon name="Phone" size={20} className="mr-3" />
                         Контакты
                       </Button>
+
+                      <div className="pt-4 pb-2 px-3">
+                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                          Полезная информация
+                        </p>
+                      </div>
+
+                      <div className="space-y-2 px-2">
+                        <a 
+                          href="https://korolev.ru" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors"
+                        >
+                          <Icon name="Globe" size={18} className="text-primary" />
+                          <span className="text-sm">Администрация г. Королёв</span>
+                        </a>
+                        
+                        <a 
+                          href="https://vmeste.korolev.ru" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/10 transition-colors"
+                        >
+                          <Icon name="MessageSquare" size={18} className="text-primary" />
+                          <span className="text-sm">Портал «Вместе»</span>
+                        </a>
+
+                        <a 
+                          href="tel:+74955115050" 
+                          className="flex items-center gap-3 p-3 rounded-lg hover:bg-secondary/10 transition-colors"
+                        >
+                          <Icon name="Headphones" size={18} className="text-secondary" />
+                          <div className="flex flex-col">
+                            <span className="text-sm font-semibold">Единая диспетчерская</span>
+                            <span className="text-xs text-muted-foreground">+7 (495) 511-50-50</span>
+                          </div>
+                        </a>
+                      </div>
                     </nav>
 
-                    <div className="p-4 border-t bg-white/50">
-                      <div className="text-center text-sm text-muted-foreground">
-                        <p className="font-semibold">Аварийная служба</p>
-                        <p className="text-lg font-bold text-secondary mt-1">
-                          +7 (495) 911-11-11
+                    <div className="p-4 border-t bg-gradient-to-r from-red-50 to-orange-50">
+                      <div className="text-sm space-y-3">
+                        <p className="font-bold text-center text-foreground uppercase tracking-wide">
+                          ⚠️ Экстренные службы
                         </p>
+                        
+                        <div className="space-y-2">
+                          <a href="tel:112" className="flex items-center justify-between p-2 rounded-lg hover:bg-white/60 transition-colors">
+                            <div className="flex items-center gap-2">
+                              <Icon name="AlertCircle" size={16} className="text-red-600" />
+                              <span className="font-medium">Единая служба</span>
+                            </div>
+                            <span className="text-lg font-bold text-red-600">112</span>
+                          </a>
+
+                          <a href="tel:101" className="flex items-center justify-between p-2 rounded-lg hover:bg-white/60 transition-colors">
+                            <div className="flex items-center gap-2">
+                              <Icon name="Flame" size={16} className="text-orange-600" />
+                              <span className="font-medium">Пожарная</span>
+                            </div>
+                            <span className="text-lg font-bold text-orange-600">101</span>
+                          </a>
+
+                          <a href="tel:102" className="flex items-center justify-between p-2 rounded-lg hover:bg-white/60 transition-colors">
+                            <div className="flex items-center gap-2">
+                              <Icon name="ShieldAlert" size={16} className="text-blue-600" />
+                              <span className="font-medium">Полиция</span>
+                            </div>
+                            <span className="text-lg font-bold text-blue-600">102</span>
+                          </a>
+
+                          <a href="tel:103" className="flex items-center justify-between p-2 rounded-lg hover:bg-white/60 transition-colors">
+                            <div className="flex items-center gap-2">
+                              <Icon name="Heart" size={16} className="text-red-500" />
+                              <span className="font-medium">Скорая помощь</span>
+                            </div>
+                            <span className="text-lg font-bold text-red-500">103</span>
+                          </a>
+
+                          <a href="tel:104" className="flex items-center justify-between p-2 rounded-lg hover:bg-white/60 transition-colors">
+                            <div className="flex items-center gap-2">
+                              <Icon name="Droplet" size={16} className="text-cyan-600" />
+                              <span className="font-medium">Газовая служба</span>
+                            </div>
+                            <span className="text-lg font-bold text-cyan-600">104</span>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
