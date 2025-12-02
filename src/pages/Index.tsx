@@ -296,9 +296,11 @@ const Index = () => {
                 </SheetContent>
               </Sheet>
 
-              <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center shadow-lg">
-                <Icon name="Building2" className="text-white" size={24} />
-              </div>
+              <img 
+                src="https://cdn.poehali.dev/projects/b226a36e-6a34-4ee1-9c18-a13db97e4d2c/files/60ba2326-98db-4aeb-afc2-6b214a0cffdf.jpg" 
+                alt="ТСН ОЗЕРО" 
+                className="w-12 h-12 rounded-xl object-cover shadow-lg"
+              />
               <div>
                 <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
                   ТСН "ОЗЕРО"
