@@ -29,7 +29,7 @@ const Index = () => {
       title: 'Новогоднее украшение двора',
       date: '10 декабря 2024',
       content: 'Приглашаем всех жителей принять участие в украшении двора к Новому году. Встречаемся 18 декабря в 14:00.',
-      author: 'Управляющая компания'
+      author: 'ТСН "ОЗЕРО"'
     },
     {
       id: 3,
@@ -45,7 +45,7 @@ const Index = () => {
       title: 'График дежурств консьержей',
       date: '1 декабря 2024',
       content: 'Обновлен график работы консьержей. Теперь дежурство круглосуточное.',
-      author: 'Управляющая компания'
+      author: 'ТСН "ОЗЕРО"'
     }
   ];
 
@@ -301,7 +301,7 @@ const Index = () => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                  Управляющая Компания
+                  ТСН "ОЗЕРО"
                 </h1>
                 <p className="text-sm text-muted-foreground">Сервис для жителей</p>
               </div>
@@ -319,7 +319,7 @@ const Index = () => {
                   Добро пожаловать!
                 </h2>
                 <p className="text-xl mb-8 text-white/90 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-                  Платформа для комфортного взаимодействия с управляющей компанией. 
+                  Платформа для комфортного взаимодействия с Товариществом собственников недвижимости "ОЗЕРО". 
                   Следите за объявлениями и будьте в курсе всех событий вашего дома.
                 </p>
                 <div className="flex flex-wrap gap-4">
@@ -677,7 +677,7 @@ const Index = () => {
           <div className="space-y-6 animate-fade-in">
             <div className="mb-8">
               <h2 className="text-4xl font-bold mb-2">Наши сотрудники</h2>
-              <p className="text-muted-foreground">Команда специалистов управляющей компании</p>
+              <p className="text-muted-foreground">Команда специалистов ТСН "ОЗЕРО"</p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -769,7 +769,7 @@ const Index = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3">
                     <Icon name="Building2" className="text-primary" size={24} />
-                    Управляющая компания
+                    ТСН "ОЗЕРО"
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
