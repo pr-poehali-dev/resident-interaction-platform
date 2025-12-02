@@ -699,17 +699,60 @@ const Index = () => {
                     </div>
                   </CardHeader>
                   <CardContent className="space-y-3">
-                    <div className="flex items-center gap-3 text-foreground/80">
+                    <a href={`tel:${person.phone.replace(/[^+\d]/g, '')}`} className="flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors">
                       <Icon name="Phone" size={18} className="text-primary" />
                       <span>{person.phone}</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-foreground/80">
-                      <Icon name="Mail" size={18} className="text-primary" />
-                      <span>{person.email}</span>
-                    </div>
+                    </a>
                   </CardContent>
                 </Card>
               ))}
+            </div>
+
+            <div className="mt-8 space-y-4">
+              <Card className="border-2 border-orange-500 bg-orange-50/50 shadow-lg">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-xl flex items-center gap-3">
+                    <Icon name="ShieldAlert" size={24} className="text-orange-600" />
+                    ОХРАНА ТСН
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <a href="tel:+79264785758" className="flex items-center gap-3 text-lg font-semibold text-orange-700 hover:text-orange-900 transition-colors">
+                    <Icon name="Phone" size={20} className="text-orange-600" />
+                    +7 (926) 478-57-58
+                  </a>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 border-blue-500 bg-blue-50/50 shadow-lg">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-xl flex items-center gap-3">
+                    <Icon name="DoorOpen" size={24} className="text-blue-600" />
+                    По вопросам ремонта домофона
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <a href="tel:+74995011136" className="flex items-center gap-3 text-lg font-semibold text-blue-700 hover:text-blue-900 transition-colors">
+                    <Icon name="Phone" size={20} className="text-blue-600" />
+                    +7 (499) 501-11-36
+                  </a>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 border-primary bg-primary/5 shadow-lg">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-xl flex items-center gap-3">
+                    <Icon name="Mail" size={24} className="text-primary" />
+                    Электронная почта организации
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <a href="mailto:tsn-ozero@mail.ru" className="flex items-center gap-3 text-lg font-semibold text-primary hover:text-primary/80 transition-colors">
+                    <Icon name="AtSign" size={20} className="text-primary" />
+                    tsn-ozero@mail.ru
+                  </a>
+                </CardContent>
+              </Card>
             </div>
           </div>
         )}
