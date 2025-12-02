@@ -50,10 +50,11 @@ const Index = () => {
   ];
 
   const staff = [
-    { name: 'Иванов Петр Сергеевич', position: 'Управляющий', phone: '+7 (495) 123-45-67', email: 'ivanov@uk.ru' },
-    { name: 'Смирнова Анна Ивановна', position: 'Главный бухгалтер', phone: '+7 (495) 123-45-68', email: 'smirnova@uk.ru' },
-    { name: 'Кузнецов Дмитрий Петрович', position: 'Главный инженер', phone: '+7 (495) 123-45-69', email: 'kuznetsov@uk.ru' },
-    { name: 'Попова Елена Андреевна', position: 'Специалист по работе с жителями', phone: '+7 (495) 123-45-70', email: 'popova@uk.ru' }
+    { name: 'Константиниди Юрий Евангелеевич', position: 'Председатель правления', phone: '+7 (903) 561-92-51', email: 'konstanti@uk.ru' },
+    { name: 'Душенко Владимир Иванович', position: 'Управляющий', phone: '+7 (965) 111-47-60', email: 'dushenko@uk.ru' },
+    { name: 'Хромова Татьяна Ивановна', position: 'Бухгалтер', phone: '+7 (926) 763-70-13', email: 'hromova@uk.ru' },
+    { name: 'Калачев Виталий Сергеевич', position: 'Сантехник', phone: '+7 (926) 764-96-04', email: 'kalachev@uk.ru' },
+    { name: 'Герасименко Сергей Павлович', position: 'Электрик', phone: '+7 (925) 469-59-19', email: 'gerasimenko@uk.ru' }
   ];
 
   const events = [
